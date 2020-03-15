@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+#first
+{
+width:60px;
+}
+#firstdiv
+{
+width:420px;
+height:450px;
+border:1px solid red;
+margin:auto;
+
+}
+#thirddiv
+{
+width:420px;
+height:50px;
+border:1px solid blue;
+margin:auto;
+}
+#seconddiv
+{
+width:250px;
+height:250px;
+border:1px solid red;
+margin-left:100px;
+margin-top:40px;
+background-color:red;
+}
+.adj
+{
+margin-left:23px;
+height:40px;
+margin-top:4px;
+}
+</style>
+</head>
+<body>
+<div id="firstdiv">
+<div id="thirddiv">
+<button type="button" class="adj btn btn-success" id="first" onclick="Draw(x,y,w,h)">Draw</button>
+<button type="button" value="Shift Left" class="adj btn btn-primary" onclick="shift_left()">Shift Left</button>
+<button type="button" value="Shift Right"class="adj btn btn-secondary"  onclick="shift_right()">Shift Right</button>
+<button type="button" value="Delete" class="adj btn btn-danger" onclick="Delete()">Delete</button>
+</div>
+<div id="seconddiv">
+<canvas id="c1"></canvas>
+</div>
+</div>
+<script>
+cn=document.getElementById("c1");
+c4=cn.getContext("2d");
+x=40,y=40,w=120,h=75;
+
+function Draw(x,y,w,h)
+{
+    c4.clearRect(0,0, 1000, 1000);
+    c4.fillStyle = 'green';
+	c4.lineWidth = "10";
+    c4.stroke();
+    c4.fillRect(x, y, w, h);
+}
+function Delete()
+{
+	
+	c4.clearRect(0,0,cn.width,cn.height);
+	
+}
+function shift_left()
+{
+
+	x=x-10;
+	Draw(x,y,w,h);
+}
+
+function shift_right()
+{
+
+	x=x+10;
+	Draw(x,y,w,h);
+}
+</script>
+</body>

@@ -1,0 +1,83 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding-left:20px;
+  margin: 10px 2px;
+}
+.css-serial {
+  counter-reset: serial-number;
+}
+
+.css-serial td:first-child:before {
+  counter-increment: serial-number; 
+  content: counter(serial-number);  
+}
+.mybtn{
+  background:red;
+  border-radius:8px;
+  color:#fff;
+  cursor:pointer;
+  height:25px; 
+  width: 100px
+}
+</style>
+</head>
+<body>
+<script> 
+        function add() {     
+            var MyTable = document.getElementById("test"); 
+            var NewRow = MyTable.insertRow(-1); 
+            var Newcell1 = NewRow.insertCell(0);
+            var Newcell2 = NewRow.insertCell(1); 			
+            Newcell1.innerHTML = " Dummy Data";
+			Newcell2.innerHTML += "<button class='mybtn' onclick='myfun1()'>Delete</button>"; 
+        } 
+    </script> 
+	 <script>
+	  function myfun1()
+	  {
+	  del();
+	  }
+	 </script>
+	 <script> 
+	function del()
+		{
+		   document.getElementById("test").deleteRow(-1); 
+		}
+    </script>	
+	<script>
+	 $(document).ready(function () {
+     $("button").click(function () {
+       $(this).closest('tr').remove();
+        $(".row-id").each(function (i){
+           $(this).text(i+1);
+        }); 
+    });     
+});
+	</script>
+<div>  
+<button onclick="add()">Add Row</button>
+</div>
+<table id="test" style="width:75%" class="css-serial">
+  <thead>
+    <tr>
+      <th>Serial Number</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tr>
+  <td></td>
+  <td><button style="height: 25px; width: 100px; border-radius: 8px; background-color:red; color:white;">Delete</button></td>
+  </tr>
+   <tr>
+  <td></td>
+  <td><button onclick="myfun1()"style="height: 25px; width: 100px; border-radius: 8px; background-color:red; color:white;">Delete</button></td>
+  </tr>
+   <tr>
+</table>
+</body>
+</html>
